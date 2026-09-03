@@ -1,0 +1,19 @@
+.full-panel {
+
+    .top-bar {
+        height: 1.6em;
+
+        display: flex;
+        justify-content: space-around;
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-evenly;
+            gap: .75em;
+        }
+    }
+    .table-asset{
+        position: absolute;
+        top: 20%;
+    }
+}

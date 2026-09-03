@@ -1,4 +1,4 @@
-[
+const inventory = [
   {
     "id": "AST-001",
     "name": "MacBook Pro 14",
@@ -343,3 +343,5 @@
     "location": "Birmingham Office"
   }
 ]
+
+export default inventory;
