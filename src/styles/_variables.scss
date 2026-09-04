@@ -1,5 +1,6 @@
 $primary-text: #111827;
 $secondary-text: #d1d5db;
+$secondary-text-2: #6b7280;
 $header-text: #6b7280;
 // $header-text:red;
 $background: #f5f5f5;
@@ -53,11 +54,11 @@ $condition-repair-text: #c62828;
 // $labels: 12px, `#666666`, all-caps with letter-spacing
 // Monospace for serial numbers, IDs
 
-$td-width-1:12.5rem;
-$td-width-2:8.75rem;
-$td-width-3:6.25rem;
-$td-width-4:8.125rem;
-// $td-width-4:8.125rem;
+$td-width-1:12.5rem; //200px
+$td-width-2:8.75rem; //140px
+$td-width-3:6.25rem; //100px
+$td-width-4:8.125rem; //130px
+$td-width-5:8rem; //120px
 
 
 // Status indicators (icon + tag, not just badges):

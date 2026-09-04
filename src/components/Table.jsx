@@ -66,7 +66,7 @@ export default function Table() {
 
                             <td className={asset.assignedTo != null ? 'td-4': 'td-4 null'}>{asset.assignedTo != null ? asset.assignedTo : 'unassigned'}</td>
                             <td>{asset.purchaseDate}</td>
-                            <td className="td-4">{asset.location}</td>
+                            <td className="td-5">{asset.location}</td>
                         </tr>
                     </tbody>
                 )}
