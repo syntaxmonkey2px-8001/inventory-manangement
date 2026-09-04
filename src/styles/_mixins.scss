@@ -1,0 +1,7 @@
+@use '@/styles/_variables.scss';
+
+@mixin base-style($font-size){
+    background-color: variables.$background;
+    color: variables.$primary-text;
+    font-size: $font-size;
+}

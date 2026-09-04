@@ -56,17 +56,17 @@ export default function Table() {
                 {inventory.map((asset) =>
                     <tbody key={asset.id}>
                         <tr>
-                            <td>{asset.id}</td>
-                            <td>{asset.name}</td>
-                            <td>{asset.model}</td>
+                            <td className="asset-id">{asset.id}</td>
+                            <td className="td-1">{asset.name}</td>
+                            <td className="td-2">{asset.model}</td>
                             <td>{asset.serialNumber}</td>
-                            <td>{asset.type}</td>
-                            <td>{asset.status}</td>
-                            <td>{asset.condition}</td>
+                            <td className="td-3">{asset.type}</td>
+                            <td className="td-4">{asset.status}</td>
+                            <td className="td-3"> {asset.condition}</td>
 
-                            <td>{asset.assignedTo}</td>
+                            <td className={asset.assignedTo != null ? 'td-4': 'td-4 null'}>{asset.assignedTo != null ? asset.assignedTo : 'unassigned'}</td>
                             <td>{asset.purchaseDate}</td>
-                            <td>{asset.location}</td>
+                            <td className="td-4">{asset.location}</td>
                         </tr>
                     </tbody>
                 )}

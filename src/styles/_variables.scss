@@ -1,9 +1,31 @@
-$primary-text: #1a1a1a;
-$secondary-text: #666666;
+$primary-text: #111827;
+$secondary-text: #d1d5db;
+$header-text: #6b7280;
+// $header-text:red;
 $background: #f5f5f5;
 $surfaces: #ffffff; // (cards, panels)
-$borders: #e0e0e0;
+// $borders: #e0e0e0;
 $accent: #0066cc;
+
+
+
+// typography
+
+$font-family-1: sans-serif;
+$font-family-2: monospace;
+
+$fs-regular: 1em; //16px
+$fs-h1: 1.75em; //20px
+$fs-s: 0.75em; //12px
+$fs-m: .875em; //14px
+
+$border-1:#d1d5db;
+$border-2: #e5e7eb;
+
+//hover
+$accent-1:#f3f4f6;
+$accent-2:#059669;
+
 
 // others
 $badge-available-bg: #e8f5e9;
@@ -30,3 +52,37 @@ $condition-repair-text: #c62828;
 // $table text: 14px, `#1a1a1a`
 // $labels: 12px, `#666666`, all-caps with letter-spacing
 // Monospace for serial numbers, IDs
+
+$td-width-1:12.5rem;
+$td-width-2:8.75rem;
+$td-width-3:6.25rem;
+$td-width-4:8.125rem;
+// $td-width-4:8.125rem;
+
+
+// Status indicators (icon + tag, not just badges):
+
+// Available: 
+// #10b981 bg (teal) + 
+// #064e3b text
+// In-Use: 
+// #3b82f6 bg (blue) + 
+// #1e3a8a text
+// Maintenance: 
+// #f59e0b bg (amber) + 
+// #78350f text
+// Retired: 
+// #8b5cf6 bg (purple) + 
+// #3730a3 text
+
+// Condition indicators (circular badges with icon):
+
+// Good: 
+// #10b981 (green)
+// Fair: 
+// #f59e0b (amber)
+// Needs Repair: 
+// #ef4444 (red)
+
+// Accent highlights: 
+// #059669 (emerald) for interactive elements, hover states, success actions
