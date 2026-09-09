@@ -40,6 +40,13 @@
         font-size: variables.$fs-s;
         min-width: 51em;
 
+        .filters-wrapper{
+            margin-inline: 10em;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
         th {
 
             color: variables.$header-text;

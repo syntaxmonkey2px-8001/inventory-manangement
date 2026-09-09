@@ -1,43 +1,84 @@
 import inventory from "@/data/mockData"
 import '@/data/filterOptions.js'
 import filterOptions from '@/data/filterOptions.js'
+import { useState } from "react"
 
-function Filter() {
+
+// const currentFilter = [
+//     { id: 'types', property: 'type', options: filterOptions.assetTypes, selected: '' },
+//     { id: 'status', property: 'status', options: filterOptions.statuses, selected: '' },
+//     { id: 'condition', property: 'condition', options: filterOptions.conditions, selected: '' },
+//     { id: 'assignee', property: 'assignedTo', options: filterOptions.assignees, selected: '' }
+// ]
+
+
+
+function Filter({ currentFilter, setCurrentFilter }) {
+
+    //update filter data onclick
+    function getChangedValue(event, id) {
+        const changedValue = event.target.value;
+        const updatedFilter = currentFilter.map((filter) =>
+            id === filter.id ? { ...filter, selected: changedValue } : filter
+        );
+        setCurrentFilter(updatedFilter);
+
+    }
+    // filter it before render in the view
+
     return (
-        <>
-            <label htmlFor="type"></label>
-            <select name="" id="">
-                {filterOptions.assetTypes.map((type) =>
-                    <option value={type} key={type}>{type}</option>
-                )}
+        <div className="filters-wrapper">
+            {currentFilter.map((filter) =>
+                <div className="filter-item">
+                    <label htmlFor="filter-select">{filter.id}</label>
+                    <select
+                        key={filter.id}
+                        name='filter-select'
+                        id={filter.id}
+                        value={filter.selected}
+                        onChange={(event) => getChangedValue(event, filter.id)}>
 
-            </select>
-            <label htmlFor="status"></label>
-            <select name="" id="">
-                {filterOptions.statuses.map((status) =>
-                    <option value={status} key={status}>{status}</option>
-                )}
-            </select>
-            <label htmlFor="condition"></label>
-            <select name="" id="">
-                {filterOptions.conditions.map((condition)=>
-                <option value={condition}>{condition}</option>
-                )}
-            </select>
-            <label htmlFor="assignee"></label>
-            <select name="" id="">
-                {filterOptions.assignees.map((assignee)=>
-                <option value={assignee}>{assignee}</option>
-                )}
-            </select>
-        </>
+                        <option value="">All</option>
+
+                        {filter.options.map((option) =>
+
+                            <option value={option}>{option}</option>
+
+
+                        )}
+                    </select>
+                </div>
+            )}
+
+        </div>
     )
 }
+
+
 export default function Table() {
+
+    const [currentFilter, setCurrentFilter] = useState([
+        { id: 'types', property: 'type', options: filterOptions.assetTypes, selected: '' },
+        { id: 'status', property: 'status', options: filterOptions.statuses, selected: '' },
+        { id: 'condition', property: 'condition', options: filterOptions.conditions, selected: '' },
+        { id: 'assignee', property: 'assignedTo', options: filterOptions.assignees, selected: '' }
+    ]);
+
+    const [inventoryOrder, setInventoryOrder] = useState(inventory);
+
 
     const tableHeader = [
         'asset id', 'name', 'model', 'serial number', 'type', 'status', 'condition', 'assigned to', 'purchase date', 'location'
     ]
+
+    const filteredInventory = inventory.filter((asset) => {
+
+        const checkFilters = currentFilter.map((filter) =>
+            filter.selected === '' ||
+            asset[filter.property] === filter.selected)
+
+        return checkFilters.every((result) => result)
+    })
 
     return (
         <div className="table-asset">
@@ -46,14 +87,18 @@ export default function Table() {
                 assetTypes={filterOptions.assetTypes} statuses={filterOptions.statuses}
                 conditions={filterOptions.conditions}
                 assignees={filterOptions.assignees}
+                currentFilter={currentFilter}
+                setCurrentFilter={setCurrentFilter}
             />
             <table>
                 <thead>
-                    {tableHeader.map((header) =>
-                        <th key={header}>{header}</th>
-                    )}
+                    <tr>
+                        {tableHeader.map((header) =>
+                            <th key={header}>{header}</th>
+                        )}
+                    </tr>
                 </thead>
-                {inventory.map((asset) =>
+                {filteredInventory.map((asset) =>
                     <tbody key={asset.id}>
                         <tr>
                             <td className="asset-id">{asset.id}</td>
@@ -64,7 +109,7 @@ export default function Table() {
                             <td className="td-4">{asset.status}</td>
                             <td className="td-3"> {asset.condition}</td>
 
-                            <td className={asset.assignedTo != null ? 'td-4': 'td-4 null'}>{asset.assignedTo != null ? asset.assignedTo : 'unassigned'}</td>
+                            <td className={asset.assignedTo != null ? 'td-4' : 'td-4 null'}>{asset.assignedTo != null ? asset.assignedTo : 'unassigned'}</td>
                             <td>{asset.purchaseDate}</td>
                             <td className="td-5">{asset.location}</td>
                         </tr>
